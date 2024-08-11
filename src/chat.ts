@@ -5,6 +5,9 @@ export class Chat {
   constructor(apikey: string) {
     this.chatAPI = new ChatGPTAPI({
       apiKey: apikey,
+      debug: process.env.DEBUG
+        ? process.env.DEBUG === 'true'
+        : false,
       apiBaseUrl:
         process.env.OPENAI_API_ENDPOINT || 'https://api.openai.com/v1',
       completionParams: {
